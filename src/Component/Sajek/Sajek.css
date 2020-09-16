@@ -1,0 +1,54 @@
+body{
+    height: 800px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+.logo{
+    height: 60px;
+   filter: brightness(800%);
+}
+.nav-item {
+  margin-left: 40px;
+}
+.input-fild{
+    border: 2px dotted white;
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    background:transparent;
+    background:rgba(207, 203, 203, 0.356);
+    color: white;
+}
+::-webkit-input-placeholder{
+    color: white;
+}
+.booknig-aria{
+    margin-top: 120px;
+}
+.input-aria{
+    width: 100%;
+    background-color:white;
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+
+}
+.input-type{
+    width: 100%;
+    border: none;
+    padding: 15px;
+    border-radius: 2px;
+    background-color: lightgray;
+    font-size: 25px;
+}
+.input-btn{ 
+    width: 100%;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: orange;
+    text-align: center;
+    cursor: pointer;
+ }
