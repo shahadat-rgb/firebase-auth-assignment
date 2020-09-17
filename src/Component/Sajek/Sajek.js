@@ -98,7 +98,7 @@ const Sajek = () => {
                             </div>
 
                             <br />
-                         <Link to="/staysajek"><input className="input-btn" type="Start Booking" value="Start Booking" /></Link>
+                         <Link to="/sajekHotel"><input className="input-btn" type="Start Booking" value="Start Booking" /></Link>
                         </div>
                     </div>
                 </div>

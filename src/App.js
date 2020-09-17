@@ -10,6 +10,8 @@ import Sajek from './Component/Sajek/Sajek';
 import Sreemongol from './Component/Sreemongol/Sreemongol';
 import Sundorbon from './Component/Sundorbon/Sundorbon';
 import StayInSajek from './Component/StayInSajek/StayInSajek';
+import StayInSreemongol from './Component/StayInSreemongol/StayInSreemongol';
+import StayInSundorbon from './Component/StayInSundorbon/StayInSundorbon';
 
 function App() {
   return (
@@ -27,8 +29,14 @@ function App() {
         <Route path="/sundorbon">
           <Sundorbon></Sundorbon>
         </Route>
-        <Route path="/staysajek">
+        <Route path="/sajekHotel">
           <StayInSajek></StayInSajek>
+        </Route>
+        <Route path="/sreemongolHotel">
+          <StayInSreemongol></StayInSreemongol>
+        </Route>
+        <Route paath="/sundorbonHotel">
+          <StayInSundorbon></StayInSundorbon>
         </Route>
 
         <Route path="/">

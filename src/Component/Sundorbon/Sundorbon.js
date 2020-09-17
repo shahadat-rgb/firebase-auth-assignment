@@ -97,7 +97,7 @@ const Sundorbon = () => {
                         </div>
 
                         <br />
-                     <Link>   <input className="input-btn" type="Start Booking" value="Start Booking" /></Link>
+                     <Link to="/sundorbonHotel">   <input className="input-btn" type="Start Booking" value="Start Booking" /></Link>
                     </div>
                 </div>
             </div>

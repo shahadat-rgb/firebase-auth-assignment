@@ -1,12 +1,11 @@
 import React from 'react';
 import Logo from "../../Image/Logo.png"
 import { Link } from 'react-router-dom';
-import "./StayInSajek.css"
 import Rectangle1 from "../../Image/Rectangle1.png"
 import star_1_ from "../../Icon/star_1_.png"
 import Rectangle2 from "../../Image/Rectangle2.png"
 import Rectangle3 from "../../Image/Rectangle3.png"
-const StayInSajek = () => {
+const StayInSundorbon = () => {
     return (
         
         <div className="container">
@@ -39,8 +38,8 @@ const StayInSajek = () => {
         </nav>
         <hr/>
         <div className="container">
-            <p>252 stys Apr 13-17-3 guests</p>
-            <h4>Stay in Sajek Velly</h4>
+            <p>150 stys jun 15-09-20 guests</p>
+            <h4>Stay in Sundorbon</h4>
                 <div className="row">
                     <div className="col-md-6">
                         <div class="card mb-3" style={{maxWidth:"540px"}}>
@@ -98,4 +97,4 @@ const StayInSajek = () => {
     );
 };
 
-export default StayInSajek;
+export default StayInSundorbon;

@@ -4,3 +4,16 @@
 hr{
     background-color: rgba(0, 0, 0, 0.267);
 }
+.card{
+    border: none;
+}
+.card-text{
+    color: lightgray;
+}
+.card-img{
+    max-width: 100%;
+    height: 200px;
+}
+.night{
+    color: lightslategray;
+}

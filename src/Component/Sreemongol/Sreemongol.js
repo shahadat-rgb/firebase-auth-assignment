@@ -97,7 +97,7 @@ const Sreemongol = () => {
                         </div>
 
                         <br />
-                     <Link>   <input className="input-btn" type="Start Booking" value="Start Booking" /></Link>
+                     <Link to="/sreemongolHotel">   <input className="input-btn" type="Start Booking" value="Start Booking" /></Link>
                     </div>
                 </div>
             </div>
