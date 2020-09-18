@@ -37,12 +37,12 @@ function App() {
         <PrivateRoute path="/sajekHotel">
           <StayInSajek></StayInSajek>
         </PrivateRoute>
-        <Route path="/sreemongolHotel">
+        <PrivateRoute path="/sreemongolHotel">
           <StayInSreemongol></StayInSreemongol>
-        </Route>
-        <Route path="/sundorbonHotel">
+        </PrivateRoute>
+        <PrivateRoute path="/sundorbonHotel">
           <StayInSundorbon></StayInSundorbon>
-        </Route>
+        </PrivateRoute>
         <Route path="/login">
           <Login></Login>
         </Route>

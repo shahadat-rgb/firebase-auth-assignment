@@ -31,12 +31,12 @@ const Login = () => {
     }
    
     const handleGoogleSignIn =()=>{
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(googleProvider).then(function(result) {
              const {displayName,email} =result.user;
              const signInUser={name:displayName,email}
                  setLoggedInUser(signInUser);
-                 history.replace(from)
+                 history.replace(from);
                  
       }).catch(function(error) {
         //    var errorCode = error.code;
@@ -51,6 +51,7 @@ const Login = () => {
                 const signInUser={name:displayName,email}
                     setLoggedInUser(signInUser);
                     history.replace(from)
+                    console.log("user info", result.user)
                     
          }).catch(function(error) {
            //    var errorCode = error.code;
@@ -168,25 +169,29 @@ const Login = () => {
                   <section class="col-12 col-sm-6 col-md-7">
                   <div className="main-from">
                       <form onSubmit={handelSubmit}>
-                                {newUser &&  <h3 style={{marginBottom:"20px"}} className="text-center">Create an account</h3>} 
-                                {!newUser && <h3 style={{marginTop:"50px",textAlign:"center"}}>Login</h3>}
+
+                            {newUser &&  <h3 style={{marginBottom:"20px"}} className="text-center">Create an account</h3>} 
+                            {!newUser && <h3 style={{marginTop:"50px",textAlign:"center"}}>Login</h3>}
+                             
                             {newUser && <input type="text" className="input-box" name="name" onBlur={handleBlur} placeholder="write your name"   required />}<br/> <br/>
                             {newUser && <input type="text" className="input-box" name="name" onBlur={handleBlur} placeholder="Last name" required />}<br/> <br/>
                             <input className="input-box" onBlur={handleBlur} type="text" name="email" placeholder="write your email" required /><br/> <br/>
                             <input className="input-box" onBlur={handleBlur} type="password" name="password" placeholder="write your password" required /><br/><br/>
-                              {!newUser && <input type="checkbox" name="" id=""/>} {!newUser &&<label htmlFor="">Remember me</label>} {!newUser && <span style={{marginLeft:"40%",color:"orange"}}>Forgotten password</span>} <br/>
+                            
+                            {!newUser && <input type="checkbox" name="" id=""/>} {!newUser &&<label htmlFor="">Remember me</label>} {!newUser && <span style={{marginLeft:"40%",color:"orange"}}>Forgotten password</span>} <br/>
                             { !newUser && < button class="btn btn-warning input-button" >Login</button>}
-                           {newUser &&   <button class="btn btn-warning input-button" >Create an account </button>  }
+                            {newUser &&   <button class="btn btn-warning input-button" >Create an account </button>  }
                       
                        </form>
-                       <div className="text-center">
+
+                    <div className="text-center">
                          {!newUser &&  <span style={{marginRight:"8px",fontSize:"20px"}}>Don't have an account?</span>}
                          {newUser && <span style={{marginRight:"8px" ,fontSize:"20px"}}>Already have an account</span>}
 
-                        <input class="checkbox" type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" /> 
+                         <input class="checkbox" type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" /> 
                          {newUser &&  <label htmlFor="newUser"  style={{color:"yellow"}}>Login</label>  }  
                          {!newUser &&  <label htmlFor="newUser" style={{color:"yellow"}}> Create an account </label>}
-                         </div>
+                   </div>
                            <h3 style={{ color: "red" }}>{user.error}</h3>
                            {user.success && <h3 style={{ color: "green" }}> User {newUser ? "created" : "logged In"}  successfully</h3>}
                    </div>   
@@ -194,19 +199,25 @@ const Login = () => {
                   </section>
               </section>
               <br/>
-              <br/>
-                     <p class="text-center">----------Or---------</p>
-            <div onClick={handleGoogleSignIn} class="auth-provider">
-                <img style={{height:"30px",width:"40px",marginRight:"30px"}} src={google}alt=""/>
-                 <p>Sign in Google</p>
-            </div>
-            <div onClick={handleFacebookSignIn} class="auth-provider">
-                 <img style={{height:"30px",width:"40px",marginRight:"30px"}} src={fb}alt=""/>
-                 <p>Sign in facebook</p>
-            </div>
+
+                 <p class="text-center">-----------------Or-------------------</p>
+
+                <section class="row justify-content-center">
+                    <section class="col-12 col-sm-6 col-md-6">
+                        <div onClick={handleGoogleSignIn} class="auth-provider">
+                            <img style={{ height: "40px", width: "40px", marginRight: "30%" }} src={google} alt="" />
+                            <h4>Sign in Google</h4>
+                        </div>
+                        <br />
+                        <div onClick={handleFacebookSignIn} class="auth-provider">
+                            <img style={{ height: "40px", width: "40px", marginRight: "30%" }} src={fb} alt="" />
+                            <h4>Sign in facebook</h4>
+                        </div>
+                    </section>
+                </section>
             </div>
         </div>
-        
+
     );
 };
 
