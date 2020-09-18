@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState }  from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -12,9 +12,14 @@ import Sundorbon from './Component/Sundorbon/Sundorbon';
 import StayInSajek from './Component/StayInSajek/StayInSajek';
 import StayInSreemongol from './Component/StayInSreemongol/StayInSreemongol';
 import StayInSundorbon from './Component/StayInSundorbon/StayInSundorbon';
+import Login from './Component/Login/Login';
+import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
 
+export const UserContext=createContext();
 function App() {
+  const [loggedInUser,setLoggedInUser]=useState({});
   return (
+    <UserContext.Provider value={[loggedInUser,setLoggedInUser]}>
     <Router>
       <Switch>
         <Route path="/home">
@@ -29,14 +34,17 @@ function App() {
         <Route path="/sundorbon">
           <Sundorbon></Sundorbon>
         </Route>
-        <Route path="/sajekHotel">
+        <PrivateRoute path="/sajekHotel">
           <StayInSajek></StayInSajek>
-        </Route>
+        </PrivateRoute>
         <Route path="/sreemongolHotel">
           <StayInSreemongol></StayInSreemongol>
         </Route>
-        <Route paath="/sundorbonHotel">
+        <Route path="/sundorbonHotel">
           <StayInSundorbon></StayInSundorbon>
+        </Route>
+        <Route path="/login">
+          <Login></Login>
         </Route>
 
         <Route path="/">
@@ -45,6 +53,7 @@ function App() {
 
       </Switch>
     </Router>
+    </UserContext.Provider>
   );
 }
 
