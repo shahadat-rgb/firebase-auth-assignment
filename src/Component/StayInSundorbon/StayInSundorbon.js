@@ -5,6 +5,7 @@ import Rectangle1 from "../../Image/Rectangle1.png"
 import star_1_ from "../../Icon/star_1_.png"
 import Rectangle2 from "../../Image/Rectangle2.png"
 import Rectangle3 from "../../Image/Rectangle3.png"
+import Map from "../Map/Map.js"
 const StayInSundorbon = () => {
     return (
         
@@ -88,7 +89,7 @@ const StayInSundorbon = () => {
                         </div>
                     </div>
              <div className="col-md-6">
-                 
+                 <Map></Map>
              </div>
          </div>
         </div>

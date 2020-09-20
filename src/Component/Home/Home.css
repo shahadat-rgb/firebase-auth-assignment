@@ -25,8 +25,12 @@ body{
 }
 .travel-img{
     width: 100%;
-    border-radius: 5px;
     margin-top: 20px;
+    transition: transform .1s;
+}
+.travel-img:hover{
+ transform: scale(1.08);
+ border: 2px solid orange;
 }
 .booking-aria{
     margin-top: 120px;

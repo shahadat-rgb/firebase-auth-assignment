@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext }  from 'react';
 import Logo from "../../Image/Logo.png"
 import { Link } from 'react-router-dom';
 import "./StayInSajek.css"
-import Rectangle1 from "../../Image/Rectangle1.png"
+import sajek1 from "../../Image/sajek1.jpeg"
 import star_1_ from "../../Icon/star_1_.png"
-import Rectangle2 from "../../Image/Rectangle2.png"
-import Rectangle3 from "../../Image/Rectangle3.png"
+import sajek2 from "../../Image/sajek2.jpeg"
+import sajek3 from "../../Image/sajek3.jpeg"
+ import Map from "../Map/Map.js"
+import { UserContext } from '../../App';
+
+ 
+
 const StayInSajek = () => {
+   const [loggedInUser,setLoggedInUser]=useContext(UserContext)
     return (
         
         <div className="container">
@@ -29,8 +35,8 @@ const StayInSajek = () => {
                     <li class="nav-item">
                         <Link class="nav-link" href="#" >Contack</Link>
                     </li>
-                    <li class="nav-item">
-                        <Link class="nav-link" href="#" >shahadat hossain</Link>
+                    <li>
+                     <button class="btn btn-warning login-btn">Login</button>
                     </li>
                    
                    
@@ -39,14 +45,15 @@ const StayInSajek = () => {
         </nav>
         <hr/>
         <div className="container">
-            <p>252 stys Apr 13-17-3 guests</p>
+         <h4 style={{textAlign:"center",color:"orange"}}> <span style={{color:"greenyellow"}}> Welcome |</span>  {loggedInUser.name} </h4> 
+            <p>252 stys Apr 10-17-3 guests</p>
             <h4>Stay in Sajek Velly</h4>
                 <div className="row">
                     <div className="col-md-6">
                         <div class="card mb-3" style={{maxWidth:"540px"}}>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src={Rectangle1} class="card-img" alt="" />
+                                    <img src={sajek1} class="card-img" alt="" />
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -61,7 +68,7 @@ const StayInSajek = () => {
                         <div class="card mb-3" style={{ maxWidth: "540px" }}>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src={Rectangle2} class="card-img" alt="..." />
+                                    <img src={sajek2} class="card-img" alt="..." />
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -76,7 +83,7 @@ const StayInSajek = () => {
                         <div class="card mb-3" style={{ maxWidth: "540px" }}>
                             <div class="row no-gutters">
                                 <div class="col-md-4">
-                                    <img src={Rectangle3} class="card-img" alt="..." />
+                                    <img src={sajek3} class="card-img" alt="..." />
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -89,6 +96,8 @@ const StayInSajek = () => {
                         </div>
                     </div>
              <div className="col-md-6">
+
+                 <Map></Map>
                  
              </div>
          </div>

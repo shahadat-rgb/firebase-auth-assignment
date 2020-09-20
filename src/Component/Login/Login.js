@@ -11,6 +11,8 @@ import fb  from "../../Icon/fb.png"
 import "./Login.css"
 const Login = () => {
     const [newUser,setNewUser]= useState(false)
+    const [confirmPasswordError,setConfirmPasswordError]=useState(false)
+
     const [user, setUser] = useState({
       isSignedIn: false,
       name: "",
@@ -54,8 +56,7 @@ const Login = () => {
                     console.log("user info", result.user)
                     
          }).catch(function(error) {
-           //    var errorCode = error.code;
-           //    var errorMessage = error.message;
+                 
           });
    
      }
@@ -67,14 +68,13 @@ const Login = () => {
           isFromValid = /\S+@\S+\.\S+/.test(e.target.value)
     
         }
-        if (e.target.name === "name") {
-          isFromValid = e.target.value.length < 15
-        }
-        if (e.target.name === "password") {
-           const passwordValidation = e.target.value.length > 6
-           const passwordHasNumber = /\d{1}/.test(e.target.value)
-           isFromValid = passwordValidation && passwordHasNumber;
-        }
+         if (e.target.name === "password") {
+            const passwordValidation = e.target.value.length >= 6
+            const passwordHasNumber = /\d{1}/.test(e.target.value)
+            isFromValid = passwordValidation && passwordHasNumber; 
+         }
+         
+        
         if (isFromValid) {
           const userInfo = { ...user }
           userInfo[e.target.name] = e.target.value;
@@ -84,24 +84,29 @@ const Login = () => {
       }
     
       const handelSubmit = (e) => {
-        // console.log( user.email, user.password);
+    
           if(newUser && user.email && user.password){
+                  user.password === user.confirmPassword ?
           firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
           .then(res =>{
-            const newUserInfo={ ...user}
+            setConfirmPasswordError(false)
+            const newUserInfo={ ...user} 
               newUserInfo.error='';
               newUserInfo.success=true;
               setUser(newUserInfo)
-              updateUserName(user.name);
-          })
+              
+            })
+             
+             
+        
           .catch(error => {
                  const newUserInfo={ ...user}
-                 newUserInfo.error=error.message;
-                 newUserInfo.success=false;
+                  newUserInfo.error=error.message;
+                  newUserInfo.success=false;
                    setUser(newUserInfo)
                
-               });
-    
+               })
+               :setConfirmPasswordError(true)
           }
          if(!newUser && user.email && user.password){
            firebase.auth().signInWithEmailAndPassword(user.email,user.password)
@@ -112,7 +117,9 @@ const Login = () => {
               setUser(newUserInfo)
               setLoggedInUser(newUserInfo);
               history.replace(from)
-            console.log("sign in user info" , res.user);
+           
+              
+      
           })
           .catch(error => {
                  const newUserInfo={ ...user}
@@ -122,21 +129,11 @@ const Login = () => {
                
                });
          
-         }
-          e.preventDefault();
-        }
-        const updateUserName= name =>{
-         const user = firebase.auth().currentUser;
+              }
+            e.preventDefault();
+      }
     
-           user.updateProfile({
-            displayName:name
-        
-        }).then(function(){
-           console.log("user name update successfully");
-         }).catch(function (error) {
-           console.log(error);
-         })
-        } 
+  
     return (
       
         <div className="container">
@@ -170,18 +167,21 @@ const Login = () => {
                   <div className="main-from">
                       <form onSubmit={handelSubmit}>
 
-                            {newUser &&  <h3 style={{marginBottom:"20px"}} className="text-center">Create an account</h3>} 
+                            {newUser &&  <h3 style={{marginBottom:"10px"}} className="text-center">Create an account</h3>} 
                             {!newUser && <h3 style={{marginTop:"50px",textAlign:"center"}}>Login</h3>}
                              
-                            {newUser && <input type="text" className="input-box" name="name" onBlur={handleBlur} placeholder="write your name"   required />}<br/> <br/>
+                            {newUser && <input type="text" className="input-box" name="name" onBlur={handleBlur} placeholder="write first name"  required />}<br/> <br/>
                             {newUser && <input type="text" className="input-box" name="name" onBlur={handleBlur} placeholder="Last name" required />}<br/> <br/>
                             <input className="input-box" onBlur={handleBlur} type="text" name="email" placeholder="write your email" required /><br/> <br/>
                             <input className="input-box" onBlur={handleBlur} type="password" name="password" placeholder="write your password" required /><br/><br/>
-                            
-                            {!newUser && <input type="checkbox" name="" id=""/>} {!newUser &&<label htmlFor="">Remember me</label>} {!newUser && <span style={{marginLeft:"40%",color:"orange"}}>Forgotten password</span>} <br/>
+                            { newUser &&   <small>your must be 6 charcter length 0r 6+ and must be can write the any number(0-9)</small> }
+                            {newUser &&  <input className="input-box" onBlur={(event)=>setUser({...user,confirmPassword:event.target.value})}
+                           type="password"  placeholder="confirm password" required />} <br/><br/>
+                            {   confirmPasswordError ?  <h5 style={{color:"red",textAlign:"center"}}>Doesn't match your password </h5> : '' } 
+                            {!newUser && <input type="checkbox" name="" id=""/>} {!newUser &&<label htmlFor="">Remember me</label>} {!newUser && <span style={{marginLeft:"48%",color:"orange"}}>Forgotten password</span>} <br/>
                             { !newUser && < button class="btn btn-warning input-button" >Login</button>}
                             {newUser &&   <button class="btn btn-warning input-button" >Create an account </button>  }
-                      
+                           
                        </form>
 
                     <div className="text-center">
@@ -189,11 +189,13 @@ const Login = () => {
                          {newUser && <span style={{marginRight:"8px" ,fontSize:"20px"}}>Already have an account</span>}
 
                          <input class="checkbox" type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" /> 
-                         {newUser &&  <label htmlFor="newUser"  style={{color:"yellow"}}>Login</label>  }  
-                         {!newUser &&  <label htmlFor="newUser" style={{color:"yellow"}}> Create an account </label>}
+                         {newUser &&  <label htmlFor="newUser"  style={{color:"orange",fontSize:"15px"}}>Login</label>  }  
+                         {!newUser &&  <label htmlFor="newUser" style={{color:"orange",fontSize:"15px"}}> Create an account </label>}
                    </div>
                            <h3 style={{ color: "red" }}>{user.error}</h3>
-                           {user.success && <h3 style={{ color: "green" }}> User {newUser ? "created" : "logged In"}  successfully</h3>}
+                           {user.success && <h3 style={{ color: "green",textAlign:"center" }}> User {newUser ? "created successfully,please click the checkbox" : "logged In successfully,please click the login btn"}</h3>}
+                                                              
+                              
                    </div>   
 
                   </section>
@@ -208,10 +210,12 @@ const Login = () => {
                             <img style={{ height: "40px", width: "40px", marginRight: "30%" }} src={google} alt="" />
                             <h4>Sign in Google</h4>
                         </div>
-                        <br />
+                        <br/>
                         <div onClick={handleFacebookSignIn} class="auth-provider">
                             <img style={{ height: "40px", width: "40px", marginRight: "30%" }} src={fb} alt="" />
                             <h4>Sign in facebook</h4>
+                            <br/>
+                            <br/>
                         </div>
                     </section>
                 </section>
@@ -219,6 +223,7 @@ const Login = () => {
         </div>
 
     );
-};
+ }
+
 
 export default Login;

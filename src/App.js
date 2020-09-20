@@ -6,9 +6,9 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './Component/Home/Home';
-import Sajek from './Component/Sajek/Sajek';
-import Sreemongol from './Component/Sreemongol/Sreemongol';
-import Sundorbon from './Component/Sundorbon/Sundorbon';
+import SajekVelly from './Component/Sajek/SajekVelly';
+import Sreemangol from './Component/Sreemongol/Sreemangol';
+import Sundarban from './Component/Sundorbon/Sundarban';
 import StayInSajek from './Component/StayInSajek/StayInSajek';
 import StayInSreemongol from './Component/StayInSreemongol/StayInSreemongol';
 import StayInSundorbon from './Component/StayInSundorbon/StayInSundorbon';
@@ -20,27 +20,28 @@ function App() {
   const [loggedInUser,setLoggedInUser]=useState({});
   return (
     <UserContext.Provider value={[loggedInUser,setLoggedInUser]}>
+
     <Router>
       <Switch>
         <Route path="/home">
            <Home></Home>
         </Route>
         <Route path="/sajek">
-        <Sajek></Sajek>
+         <SajekVelly></SajekVelly>
         </Route>
         <Route path="/sreemongol">
-          <Sreemongol></Sreemongol>
+          <Sreemangol></Sreemangol>
         </Route>
         <Route path="/sundorbon">
-          <Sundorbon></Sundorbon>
+          <Sundarban></Sundarban>
         </Route>
-        <PrivateRoute path="/sajekHotel">
+        <PrivateRoute path ="/sajekHotel">
           <StayInSajek></StayInSajek>
         </PrivateRoute>
-        <PrivateRoute path="/sreemongolHotel">
+        <PrivateRoute path ="/sreemongolHotel">
           <StayInSreemongol></StayInSreemongol>
         </PrivateRoute>
-        <PrivateRoute path="/sundorbonHotel">
+        <PrivateRoute path ="/sundorbonHotel">
           <StayInSundorbon></StayInSundorbon>
         </PrivateRoute>
         <Route path="/login">
