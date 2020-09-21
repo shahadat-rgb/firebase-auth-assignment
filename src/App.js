@@ -14,6 +14,7 @@ import StayInSreemongol from './Component/StayInSreemongol/StayInSreemongol';
 import StayInSundorbon from './Component/StayInSundorbon/StayInSundorbon';
 import Login from './Component/Login/Login';
 import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
+import NoMatch from './Component/NoMatch/NoMatch';
 
 export const UserContext=createContext();
 function App() {
@@ -23,6 +24,10 @@ function App() {
 
     <Router>
       <Switch>
+      <Route exact path="/">
+          <Home></Home>
+        </Route>
+
         <Route path="/home">
            <Home></Home>
         </Route>
@@ -47,11 +52,11 @@ function App() {
         <Route path="/login">
           <Login></Login>
         </Route>
-
-        <Route path="/">
-          <Home></Home>
+      
+        <Route path="*" >
+             <NoMatch></NoMatch>
         </Route>
-
+      
       </Switch>
     </Router>
     </UserContext.Provider>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Logo from "../../Image/Logo.png"
 import { Link } from 'react-router-dom';
 import star_1_ from "../../Icon/star_1_.png"
@@ -6,7 +6,9 @@ import sreemongol1 from "../../Image/sreemongol1.jpeg"
 import sreemongol2 from "../../Image/sreemongol2.jpeg"
 import sreemongol3 from "../../Image/sreemongol3.jpeg"
 import Map from "../Map/Map.js"
+import { UserContext } from '../../App';
 const StayInSreemongol = () => {
+    const [loggedInUser,setLoggedInUser]=useContext(UserContext)
     return (
         
         <div className="container">
@@ -39,6 +41,7 @@ const StayInSreemongol = () => {
         </nav>
         <hr/>
         <div className="container">
+        <h4 style={{textAlign:"center",color:"orange"}}> <span style={{color:"greenyellow"}}> Welcome |</span>  {loggedInUser.name} </h4> 
             <p>242 stys Apr 30-17-3 guests</p>
             <h4>Stay in Sreemongol</h4>
                 <div className="row">

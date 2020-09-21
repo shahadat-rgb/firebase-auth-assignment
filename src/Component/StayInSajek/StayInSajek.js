@@ -35,8 +35,8 @@ const StayInSajek = () => {
                     <li class="nav-item">
                         <Link class="nav-link" href="#" >Contack</Link>
                     </li>
-                    <li>
-                     <button class="btn btn-warning login-btn">Login</button>
+                    <li class="nav-item">
+                        <Link class="nav-link" href="#" > md shahadat hossain</Link>
                     </li>
                    
                    

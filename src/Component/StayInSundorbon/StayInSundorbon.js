@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Logo from "../../Image/Logo.png"
 import { Link } from 'react-router-dom';
 import Rectangle1 from "../../Image/Rectangle1.png"
@@ -6,7 +6,9 @@ import star_1_ from "../../Icon/star_1_.png"
 import Rectangle2 from "../../Image/Rectangle2.png"
 import Rectangle3 from "../../Image/Rectangle3.png"
 import Map from "../Map/Map.js"
+import { UserContext } from '../../App';
 const StayInSundorbon = () => {
+    const [loggedInUser,setLoggedInUser] =useContext(UserContext)
     return (
         
         <div className="container">
@@ -39,6 +41,7 @@ const StayInSundorbon = () => {
         </nav>
         <hr/>
         <div className="container">
+        <h4 style={{textAlign:"center",color:"orange"}}> <span style={{color:"greenyellow"}}> Welcome |</span>  {loggedInUser.name} </h4> 
             <p>150 stys jun 15-09-20 guests</p>
             <h4>Stay in Sundorbon</h4>
                 <div className="row">
