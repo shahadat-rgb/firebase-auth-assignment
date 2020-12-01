@@ -1,3 +1,20 @@
-This is a single travel guro website ,where people can select their favorite place in if
-They want to stay.sreemangal,sajex and sundorbon.In this website there have been
-opportunities for hotels.so anyone can click.
+### Travel Guru - This is a Travel Agency of Bangladesh.
+---
+**[Visit our Travel Guru website](https://fir-auth-assignment.firebaseapp.com/)**
+#### Travel Guru Overview:
+* Book your traveling place
+* Book a hotel
+* Get direction about your destination
+..
+
+#### Usage Technology:
+* React JS
+* Material UI
+* Firebase Auth
+>
+#### Usage Tools:
+* Firebase Hosting
+* Firebase Tool
+* VS Code
+* Git
+* Github
